@@ -65,11 +65,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\EventHandlers\DistanceEventHandler.cs" />
     <Compile Include="Assets\Scripts\EventHandlers\EventHandlerBase.cs" />
+    <Compile Include="Assets\Scripts\EventSystem.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ICharacter.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHandler.cs" />
     <Compile Include="Assets\Scripts\Patterns\Entities\Citizen.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\CharacterFactory.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\CitizenFactory.cs" />
+    <Compile Include="Assets\Scripts\UI\FactoryCreateButton.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

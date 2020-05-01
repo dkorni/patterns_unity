@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterFactory
+public abstract class CharacterFactory : MonoBehaviour
 {
-    public abstract ICharacter CreateCharacter();
+    protected abstract ICharacter CreateCharacter();
 
     public void SpawnCharacter(Vector3 point)
     {

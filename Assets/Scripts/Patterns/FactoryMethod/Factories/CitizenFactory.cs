@@ -10,12 +10,13 @@ namespace Assets.Scripts.Patterns.FactoryMethod.Factories
         /// Fabric method. Creates the citizen character amd setup it.
         /// </summary>
         /// <returns></returns>
-        public override ICharacter CreateCharacter()
+        protected override ICharacter CreateCharacter()
         {
-            var gameObject = Resources.Load<GameObject>("Characters/Citizen");
-            var character = gameObject.AddComponent<Citizen>();
-            character.Agent = gameObject.GetComponent<NavMeshAgent>();
-            character.Animator = gameObject.GetComponent<Animator>();
+            var resource = Resources.Load<GameObject>("Characters/Citizen");
+            var go = Instantiate(resource);
+            var character = go.AddComponent<Citizen>();
+            character.Agent = go.GetComponent<NavMeshAgent>();
+            character.Animator = go.GetComponent<Animator>();
             return character;
         }
     }
