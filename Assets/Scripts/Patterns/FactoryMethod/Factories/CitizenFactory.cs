@@ -17,6 +17,7 @@ namespace Assets.Scripts.Patterns.FactoryMethod.Factories
             var character = go.AddComponent<Citizen>();
             character.Agent = go.GetComponent<NavMeshAgent>();
             character.Animator = go.GetComponent<Animator>();
+            character.GameObject = go.gameObject;
             return character;
         }
     }

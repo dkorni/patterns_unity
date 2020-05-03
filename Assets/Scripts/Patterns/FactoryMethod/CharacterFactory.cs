@@ -6,9 +6,10 @@ public abstract class CharacterFactory : MonoBehaviour
 {
     protected abstract ICharacter CreateCharacter();
 
-    public void SpawnCharacter(Vector3 point)
+    public ICharacter SpawnCharacter(Vector3 point)
     {
         var character = CreateCharacter();
         character.Walk();
+        return character;
     }
 }

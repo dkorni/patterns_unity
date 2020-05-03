@@ -63,14 +63,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CharacterSpawner.cs" />
+    <Compile Include="Assets\Scripts\CustomEvents.cs" />
     <Compile Include="Assets\Scripts\EventHandlers\DistanceEventHandler.cs" />
     <Compile Include="Assets\Scripts\EventHandlers\EventHandlerBase.cs" />
+    <Compile Include="Assets\Scripts\EventHandlers\SpawnEnemyHandler.cs" />
     <Compile Include="Assets\Scripts\EventSystem.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ICharacter.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHandler.cs" />
     <Compile Include="Assets\Scripts\Patterns\Entities\Citizen.cs" />
+    <Compile Include="Assets\Scripts\Patterns\Entities\Policeman.cs" />
+    <Compile Include="Assets\Scripts\Patterns\Entities\Zombie.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\CharacterFactory.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\CitizenFactory.cs" />
+    <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\PolicemanFactory.cs" />
+    <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\ZombieFactory.cs" />
     <Compile Include="Assets\Scripts\UI\FactoryCreateButton.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -90,17 +97,11 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
@@ -113,6 +114,12 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

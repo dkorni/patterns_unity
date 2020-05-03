@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.EventHandlers;
+using Assets.Scripts.Events;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventSystem : MonoBehaviour
 {
@@ -18,13 +21,16 @@ public class EventSystem : MonoBehaviour
                 var eventSystem = Resources.Load<GameObject>("EventSystem");
                 var go = Instantiate(eventSystem);
                 _instance = go.GetComponent<EventSystem>();
+                _instance.SpawnEnemyEvent = new SpawnEvent();
             }
 
             return _instance;
         }
     }
 
-    public void Register(IHandler handler)
+    public SpawnEvent SpawnEnemyEvent { get; set; }
+
+    public void RegisterLoop(IHandler handler)
     {
         _handlers.Add(handler);
         var coroutine = StartCoroutine(handler.HandleCoroutine());
