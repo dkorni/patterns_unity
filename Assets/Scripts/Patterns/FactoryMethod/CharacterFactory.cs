@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class CharacterFactory : MonoBehaviour
 {
-    protected abstract ICharacter CreateCharacter();
+    protected abstract ICharacter CreateCharacter(Vector3 point);
 
     public ICharacter SpawnCharacter(Vector3 point)
     {
-        var character = CreateCharacter();
+        var character = CreateCharacter(point);
         character.Walk();
         return character;
     }

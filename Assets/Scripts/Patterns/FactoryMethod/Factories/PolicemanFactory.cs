@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class PolicemanFactory : CharacterFactory
 {
-    protected override ICharacter CreateCharacter()
+    protected override ICharacter CreateCharacter(Vector3 point)
     {
         var resource = Resources.Load<GameObject>("Characters/Policeman");
         var go = Instantiate(resource);

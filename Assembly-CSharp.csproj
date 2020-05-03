@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\CitizenFactory.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\PolicemanFactory.cs" />
     <Compile Include="Assets\Scripts\Patterns\FactoryMethod\Factories\ZombieFactory.cs" />
+    <Compile Include="Assets\Scripts\RayCharacterCreator.cs" />
     <Compile Include="Assets\Scripts\UI\FactoryCreateButton.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/My_files/Projects/Patterns/Patterns/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
