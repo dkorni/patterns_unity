@@ -5,5 +5,5 @@ using UnityEngine.Events;
 namespace Assets.Scripts.Events
 {
     [Serializable]
-    public class SpawnEvent : UnityEvent<GameObject> { }
+    public class SpawnEvent : UnityEvent<ICharacter> { }
 }

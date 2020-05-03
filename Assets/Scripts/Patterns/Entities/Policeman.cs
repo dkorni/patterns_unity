@@ -11,16 +11,22 @@ namespace Assets.Scripts.Patterns.Entities
     [RequireComponent(typeof(Animator))]
     public class Policeman : MonoBehaviour, ICharacter
     {
+        public float Health { get; set; }
         public GameObject GameObject { get; set; }
         public NavMeshAgent Agent { get; set; }
         public Animator Animator { get; set; }
 
-        private SortedList<float, Transform> _enemies = new SortedList<float, Transform>();
+        private SortedList<float, ICharacter> _enemies = new SortedList<float, ICharacter>();
 
         public void Walk()
         {
             Idle();
             StartCoroutine(Walking());
+        }
+
+        public void SetDamage(float damage)
+        {
+            throw new System.NotImplementedException();
         }
 
         IEnumerator Walking()
@@ -29,14 +35,17 @@ namespace Assets.Scripts.Patterns.Entities
             {
                 // idle state
                 if (_enemies.Count > 0)
+                {
                     AttackMode();
+                }
+
                 yield return null;
             }
         }
 
-        public void AddEnemy(GameObject enemy)
+        public void AddEnemy(ICharacter enemy)
         {
-            _enemies.Add(Vector3.Distance(transform.position, enemy.transform.position), enemy.transform);
+            _enemies.Add(Vector3.Distance(transform.position, enemy.GameObject.transform.position), enemy);
         }
 
         private void Idle()
@@ -60,10 +69,24 @@ namespace Assets.Scripts.Patterns.Entities
 
         private void AttackMode()
         {
-            Animator.SetBool("Walking", false);
-            Animator.SetBool("Attack", true);
-            Agent.isStopped = true;
-            transform.LookAt(_enemies.FirstOrDefault().Value.position);
+            if (Animator.GetBool("Walking"))
+            {
+                Animator.SetBool("Walking", false);
+                Animator.SetBool("Attack", true);
+                Agent.isStopped = true;
+                StartCoroutine(Attack());
+            }
+
+            transform.LookAt(_enemies.FirstOrDefault().Value.GameObject.transform);
+        }
+
+        IEnumerator Attack()
+        {
+            while (true)
+            {
+                _enemies.FirstOrDefault().Value.SetDamage(50);
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 }

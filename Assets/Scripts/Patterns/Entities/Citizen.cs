@@ -9,6 +9,7 @@ namespace Assets.Scripts.Patterns.Entities
     [RequireComponent(typeof(Animator))]
     public class Citizen : MonoBehaviour, ICharacter
     {
+        public float Health { get; set; }
         public GameObject GameObject { get; set; }
         public NavMeshAgent Agent { get; set; }
         public Animator Animator { get; set; }
@@ -27,6 +28,11 @@ namespace Assets.Scripts.Patterns.Entities
                 Walk();
             });
             EventSystem.Instance.RegisterLoop(distanceHandler);
+        }
+
+        public void SetDamage(float damage)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
