@@ -13,6 +13,7 @@ public class ZombieFactory : CharacterFactory
         character.Animator = go.GetComponent<Animator>();
         character.GameObject = go.gameObject;
         character.Enemy = FindObjectOfType<Policeman>();
+        EventSystem.Instance.SpawnEnemyEvent.Invoke(character.GameObject);
        // EventSystem.Instance.SpawnEnemyEvent.AddListener((g) => character.AddEnemy(g));
         return character;
     }

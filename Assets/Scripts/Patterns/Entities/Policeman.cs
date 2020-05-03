@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.EventHandlers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,30 +19,51 @@ namespace Assets.Scripts.Patterns.Entities
 
         public void Walk()
         {
-            // idle state
-           if(_enemies.Count == 0)
-               Idle();
+            Idle();
+            StartCoroutine(Walking());
+        }
+
+        IEnumerator Walking()
+        {
+            while (true)
+            {
+                // idle state
+                if (_enemies.Count > 0)
+                    AttackMode();
+                yield return null;
+            }
         }
 
         public void AddEnemy(GameObject enemy)
         {
-            _enemies.Add(Vector3.Distance(transform.position, gameObject.transform.position), enemy.transform);
+            _enemies.Add(Vector3.Distance(transform.position, enemy.transform.position), enemy.transform);
         }
 
         private void Idle()
         {
-            var target = new Vector3(transform.position.x + Random.Range(-4, 4f), transform.position.y,
-                transform.position.z + Random.Range(-4f, 4f));
-            Agent.SetDestination(target);
-            Animator.SetBool("Walking", true);
-            var distanceHandler = new DistanceEventHandler(transform, target);
-            distanceHandler.Event.AddListener(() =>
+            if (_enemies.Count == 0)
             {
-                Animator.SetBool("Walking", false);
-                Debug.Log("I am hear...");
-                Walk();
-            });
-            EventSystem.Instance.RegisterLoop(distanceHandler);
+                var target = new Vector3(transform.position.x + Random.Range(-4, 4f), transform.position.y,
+                    transform.position.z + Random.Range(-4f, 4f));
+                Agent.SetDestination(target);
+                Animator.SetBool("Walking", true);
+                var distanceHandler = new DistanceEventHandler(transform, target);
+                distanceHandler.Event.AddListener(() =>
+                {
+                    Animator.SetBool("Walking", false);
+                    Debug.Log("I am hear...");
+                    Idle();
+                });
+                EventSystem.Instance.RegisterLoop(distanceHandler);
+            }
+        }
+
+        private void AttackMode()
+        {
+            Animator.SetBool("Walking", false);
+            Animator.SetBool("Attack", true);
+            Agent.isStopped = true;
+            transform.LookAt(_enemies.FirstOrDefault().Value.position);
         }
     }
 }
